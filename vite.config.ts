@@ -20,9 +20,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), tailwindcss()],
-    // Project site on GitHub Pages lives under /task-management-system/ —
+    // Project site on GitHub Pages lives under /flowtask-supabase/ —
     // only the Actions build sets this flag, so dev and local builds stay at "/".
-    base: process.env.BUILD_FOR_GH_PAGES ? "/task-management-system/" : "/",
+    base: process.env.BUILD_FOR_GH_PAGES ? "/flowtask-supabase/" : "/",
     resolve: {
       alias: {
         "@": fileURLToPath(new URL("./src", import.meta.url)),
