@@ -1,0 +1,22 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build output (GitHub Actions rebuilds it)
+dist/
+
+# Local test artifacts
+.playwright-mcp/
+test-results/
+
+# Logs & caches
+npm-cache/
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
