@@ -9,10 +9,13 @@ export default defineConfig(({ mode }) => {
   // only via the define mappings below — URL + publishable key only, which
   // are safe for browsers by design. No secret is ever bundled.
   const env = loadEnv(mode, process.cwd(), "");
+  // process.env fallback covers CI builds (GitHub Actions) where the values
+  // come from repo secrets instead of a local .env file.
   const supabaseUrl =
-    env.NEXT_PUBLIC_SUPABASE_URL ?? env.VITE_SUPABASE_URL ?? "";
+    env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL ?? env.VITE_SUPABASE_URL ?? "";
   const supabaseKey =
     env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
     env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
     env.VITE_SUPABASE_PUBLISHABLE_KEY ??
     env.VITE_SUPABASE_ANON_KEY ??

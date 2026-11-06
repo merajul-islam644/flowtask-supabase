@@ -25,10 +25,14 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      # BUILD_FOR_GH_PAGES switches the Vite base path to /task-management-system/
+      # BUILD_FOR_GH_PAGES switches the Vite base path to /flowtask-supabase/
+      # Supabase values come from repo secrets — baked into the client bundle
+      # as URL + publishable key only, both safe for browsers by design.
       - run: npm run build
         env:
           BUILD_FOR_GH_PAGES: "1"
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
       # SPA fallback: any unknown path serves index.html
       - name: Add SPA fallback (404.html)
         run: cp dist/index.html dist/404.html
