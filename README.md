@@ -20,6 +20,13 @@ A React 19 + Vite + TypeScript task manager (Tasks list/board/calendar, Projects
 | `scripts/check-connection.js` | Read-only connectivity check (`npm run check`) |
 | `scripts/key-info.js` | Safe `.env` key diagnostics (never prints values) |
 
+## Deploy (live)
+
+- **Live URL**: https://merajul-islam644.github.io/flowtask-supabase/
+- **Repo**: https://github.com/merajul-islam644/flowtask-supabase
+- Every push to `main` auto-builds and deploys via GitHub Actions (`.github/workflows/deploy.yml`).
+- CI reads `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` from **repo secrets** (Settings → Secrets and variables → Actions). The local `.env` never leaves this machine.
+
 ## Setup
 
 1. **`.env`** — fill in `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (Dashboard → Project Settings → API). Edit the file yourself; never paste keys in chat. `vite.config.ts` maps these names automatically — no `VITE_*` duplicates needed.
